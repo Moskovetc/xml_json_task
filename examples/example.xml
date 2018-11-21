@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shops xmlns:xsi="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="example.xsd">
+	<shop>
+	<category>
+		<name>Food</name>
+		<subcategory>
+			<name>Meat</name>
+			<product> 
+				<name>Pork</name>
+				<manufacturer>Pork Co</manufacturer>
+				<model>mea001</model>
+				<manufacturedate>10-11-2018</manufacturedate>
+				<color>pink</color>
+				<price>250</price>
+				<quantity>5</quantity>
+			</product>
+			<product> 
+				<name>chiken</name>
+				<manufacturer>chiken Co</manufacturer>
+				<model>mea002</model>
+				<manufacturedate>09-11-2018</manufacturedate>
+				<color>white</color>
+				<price>200</price>
+				<quantity>15</quantity>
+			</product>
+			<product> 
+				<name>cow</name>
+				<manufacturer>Fermer Co</manufacturer>
+				<model>mea003</model>
+				<manufacturedate>01-11-2018</manufacturedate>
+				<color>pink</color>
+				<price>210</price>
+				<quantity>20</quantity>
+			</product>
+		</subcategory>
+		<subcategory>
+			<name>Milk</name>
+			<product> 
+				<name>milk</name>
+				<manufacturer>Fermer Co</manufacturer>
+				<model>mil001</model>
+				<manufacturedate>10-11-2018</manufacturedate>
+				<color>white</color>
+				<price>40</price>
+				<quantity>60</quantity>
+			</product>
+			<product> 
+				<name>cheese</name>
+				<manufacturer>Fermer Co</manufacturer>
+				<model>mil002</model>
+				<manufacturedate>08-11-2018</manufacturedate>
+				<color>yellow</color>
+				<price>120</price>
+				<quantity>30</quantity>
+			</product>
+			<product> 
+				<name>curd</name>
+				<manufacturer>Curd Factory Co</manufacturer>
+				<model>mil003</model>
+				<manufacturedate>20-11-2018</manufacturedate>
+				<color>white</color>
+				<price>132</price>
+				<quantity>102</quantity>
+			</product>
+		</subcategory>
+	</category>
+	</shop>
+</shops>
