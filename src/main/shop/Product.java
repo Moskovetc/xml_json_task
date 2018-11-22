@@ -1,8 +1,10 @@
 package main.shop;
 
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import java.time.LocalDate;
-@XmlAccessorType
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Product {
     private String name;
     private String manufaturer;
@@ -66,5 +68,18 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", manufaturer='" + manufaturer + '\'' +
+                ", model='" + model + '\'' +
+                ", manufactureDate=" + manufactureDate +
+                ", color='" + color + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
     }
 }
