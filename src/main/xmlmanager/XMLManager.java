@@ -49,12 +49,20 @@ public class XMLManager {
         while (reader.hasNext()) {
             int event = reader.next();
             if (XMLStreamConstants.START_ELEMENT == event && reader.getLocalName().equals(elementName)) {
-                shop.setName(getText("name", reader));
+                shop.setName(getAtribut("name", reader));
                 shop.setCategories(getCategories("category", "shop", reader));
             }
-//            if (XMLStreamConstants.END_ELEMENT == event && reader.getLocalName().equals(elementName)) break;
+            if (XMLStreamConstants.END_ELEMENT == event && reader.getLocalName().equals(elementName)) break;
         }
         return shop;
+    }
+
+    private String getAtribut(String atributName, XMLStreamReader reader) {
+        for (int i = 0, n = reader.getAttributeCount(); i < n; ++i) {
+            if (reader.getAttributeName(i).toString().equals(atributName))
+                return reader.getAttributeValue(i);
+        }
+        return "";
     }
 
     private List<Category> getCategories(
