@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <shops xmlns:xsi="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="example.xsd">
 	<shop>
+	<name>Only EDA shop</name>
 	<category>
 		<name>Food</name>
 		<subcategory>

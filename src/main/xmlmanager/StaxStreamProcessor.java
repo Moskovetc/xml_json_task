@@ -1,4 +1,4 @@
-package main;
+package main.xmlmanager;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;

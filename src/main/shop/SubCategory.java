@@ -1,8 +1,12 @@
 package main.shop;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
+@XmlRootElement
 public class SubCategory<T> {
+    @XmlElement
     private String name;
     private List<T> products;
 
@@ -18,6 +22,7 @@ public class SubCategory<T> {
         return products;
     }
 
+    @XmlElement( name = "product" )
     public void setProducts(List<T> products) {
         this.products = products;
     }

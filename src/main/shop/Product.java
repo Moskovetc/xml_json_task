@@ -1,21 +1,31 @@
 package main.shop;
 
-import main.LocalDateAdapter;
+import main.adapters.LocalDateAdapter;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Product {
+    @XmlElement
     private String name;
+    @XmlElement
     private String manufacturer;
+    @XmlElement
     private String model;
+    @XmlElement
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate manufactureDate;
+    @XmlElement
     private String color;
+    @XmlElement
     private int price;
+    @XmlElement
     private int quantity;
 
     public String getName() {
