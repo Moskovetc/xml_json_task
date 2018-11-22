@@ -1,0 +1,73 @@
+{
+  "name": "Only EDA shop",
+  "categories": [
+    {
+      "name": "Food",
+      "subCategories": [
+        {
+          "name": "Meat",
+          "products": [
+            {
+              "name": "Pork",
+              "manufacturer": "Pork Co",
+              "model": "mea001",
+              "manufactureDate": {
+                "year": 2018,
+                "month": 11,
+                "day": 10
+              },
+              "color": "pink",
+              "price": 250,
+              "quantity": 5
+            },
+            {
+              "name": "chiken",
+              "manufacturer": "chiken Co",
+              "model": "mea002",
+              "color": "white",
+              "price": 200,
+              "quantity": 15
+            },
+            {
+              "name": "cow",
+              "manufacturer": "Fermer Co",
+              "model": "mea003",
+              "color": "pink",
+              "price": 210,
+              "quantity": 20
+            }
+          ]
+        },
+        {
+          "name": "Milk",
+          "products": [
+            {
+              "name": "milk",
+              "manufacturer": "Fermer Co",
+              "model": "mil001",
+              "color": "white",
+              "price": 40,
+              "quantity": 60
+            },
+            {
+              "name": "cheese",
+              "manufacturer": "Fermer Co",
+              "model": "mil002",
+              "color": "yellow",
+              "price": 120,
+              "quantity": 30
+            },
+            {
+              "name": "curd",
+              "manufacturer": "Curd Factory Co",
+              "model": "mil003",
+              "color": "white",
+              "price": 132,
+              "quantity": 102
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

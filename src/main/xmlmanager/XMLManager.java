@@ -17,7 +17,7 @@ import java.util.List;
 
 public class XMLManager {
 
-    public void marshal(String outputFile, Shop shop) {
+    public void marshall(String outputFile, Shop shop) {
         try {
             File file = new File(outputFile);
             JAXBContext jaxbContext = JAXBContext.newInstance(Shop.class);
@@ -30,7 +30,7 @@ public class XMLManager {
         }
     }
 
-    public Shop unmarshal(String inputFile) {
+    public Shop unmarshall(String inputFile) {
         Shop shop = new Shop();
         try (StaxStreamProcessor processor = new StaxStreamProcessor(Files.newInputStream(Paths.get(inputFile)))) {
             XMLStreamReader reader = processor.getReader();
