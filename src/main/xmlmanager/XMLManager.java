@@ -6,8 +6,9 @@ import main.shop.Shop;
 import main.shop.SubCategory;
 
 import javax.xml.bind.*;
-import javax.xml.namespace.QName;
-import javax.xml.stream.*;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

@@ -25,7 +25,7 @@ public class JSONManager {
         }
     }
 
-    public Shop unmarshall(String inputFile){
+    public Shop unmarshall(String inputFile) {
         Shop shop = new Shop();
         try (Stream<String> fileStream = Files.lines(Paths.get(inputFile), StandardCharsets.UTF_8)) {
             StringBuilder builder = new StringBuilder();

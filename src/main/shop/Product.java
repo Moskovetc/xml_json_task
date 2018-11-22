@@ -1,8 +1,10 @@
 package main.shop;
 
-import main.adapters.LocalDateAdapter;
+import main.adapters.XMLLocalDateAdapter;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
@@ -15,7 +17,7 @@ public class Product {
     @XmlElement
     private String model;
     @XmlElement
-    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @XmlJavaTypeAdapter(XMLLocalDateAdapter.class)
     private LocalDate manufactureDate;
     @XmlElement
     private String color;

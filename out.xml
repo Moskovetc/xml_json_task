@@ -18,6 +18,7 @@
                 <name>chiken</name>
                 <manufacturer>chiken Co</manufacturer>
                 <model>mea002</model>
+                <manufactureDate>2018-11-09</manufactureDate>
                 <color>white</color>
                 <price>200</price>
                 <quantity>15</quantity>
@@ -26,6 +27,7 @@
                 <name>cow</name>
                 <manufacturer>Fermer Co</manufacturer>
                 <model>mea003</model>
+                <manufactureDate>2018-11-12</manufactureDate>
                 <color>pink</color>
                 <price>210</price>
                 <quantity>20</quantity>
@@ -37,6 +39,7 @@
                 <name>milk</name>
                 <manufacturer>Fermer Co</manufacturer>
                 <model>mil001</model>
+                <manufactureDate>2018-11-02</manufactureDate>
                 <color>white</color>
                 <price>40</price>
                 <quantity>60</quantity>
@@ -45,6 +48,7 @@
                 <name>cheese</name>
                 <manufacturer>Fermer Co</manufacturer>
                 <model>mil002</model>
+                <manufactureDate>2018-11-08</manufactureDate>
                 <color>yellow</color>
                 <price>120</price>
                 <quantity>30</quantity>
@@ -53,6 +57,7 @@
                 <name>curd</name>
                 <manufacturer>Curd Factory Co</manufacturer>
                 <model>mil003</model>
+                <manufactureDate>2018-10-10</manufactureDate>
                 <color>white</color>
                 <price>132</price>
                 <quantity>102</quantity>

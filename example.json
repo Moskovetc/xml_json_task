@@ -24,6 +24,11 @@
               "name": "chiken",
               "manufacturer": "chiken Co",
               "model": "mea002",
+              "manufactureDate": {
+                "year": 2018,
+                "month": 11,
+                "day": 9
+              },
               "color": "white",
               "price": 200,
               "quantity": 15
@@ -32,6 +37,11 @@
               "name": "cow",
               "manufacturer": "Fermer Co",
               "model": "mea003",
+              "manufactureDate": {
+                "year": 2018,
+                "month": 11,
+                "day": 12
+              },
               "color": "pink",
               "price": 210,
               "quantity": 20
@@ -45,6 +55,11 @@
               "name": "milk",
               "manufacturer": "Fermer Co",
               "model": "mil001",
+              "manufactureDate": {
+                "year": 2018,
+                "month": 11,
+                "day": 2
+              },
               "color": "white",
               "price": 40,
               "quantity": 60
@@ -53,6 +68,11 @@
               "name": "cheese",
               "manufacturer": "Fermer Co",
               "model": "mil002",
+              "manufactureDate": {
+                "year": 2018,
+                "month": 11,
+                "day": 8
+              },
               "color": "yellow",
               "price": 120,
               "quantity": 30
@@ -61,6 +81,11 @@
               "name": "curd",
               "manufacturer": "Curd Factory Co",
               "model": "mil003",
+              "manufactureDate": {
+                "year": 2018,
+                "month": 10,
+                "day": 10
+              },
               "color": "white",
               "price": 132,
               "quantity": 102
