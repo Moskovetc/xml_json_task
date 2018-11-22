@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<shop xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="example.xsd">
+    <name>Only EDA shop</name>
+    <category>
+        <name>Food</name>
+        <subCategory>
+            <name>Meat</name>
+            <product>
+                <name>Pork</name>
+                <manufacturer>Pork Co</manufacturer>
+                <model>mea001</model>
+                <manufactureDate>2018-11-10</manufactureDate>
+                <color>pink</color>
+                <price>250</price>
+                <quantity>5</quantity>
+            </product>
+            <product>
+                <name>chiken</name>
+                <manufacturer>chiken Co</manufacturer>
+                <model>mea002</model>
+                <color>white</color>
+                <price>200</price>
+                <quantity>15</quantity>
+            </product>
+            <product>
+                <name>cow</name>
+                <manufacturer>Fermer Co</manufacturer>
+                <model>mea003</model>
+                <color>pink</color>
+                <price>210</price>
+                <quantity>20</quantity>
+            </product>
+        </subCategory>
+        <subCategory>
+            <name>Milk</name>
+            <product>
+                <name>milk</name>
+                <manufacturer>Fermer Co</manufacturer>
+                <model>mil001</model>
+                <color>white</color>
+                <price>40</price>
+                <quantity>60</quantity>
+            </product>
+            <product>
+                <name>cheese</name>
+                <manufacturer>Fermer Co</manufacturer>
+                <model>mil002</model>
+                <color>yellow</color>
+                <price>120</price>
+                <quantity>30</quantity>
+            </product>
+            <product>
+                <name>curd</name>
+                <manufacturer>Curd Factory Co</manufacturer>
+                <model>mil003</model>
+                <color>white</color>
+                <price>132</price>
+                <quantity>102</quantity>
+            </product>
+        </subCategory>
+    </category>
+</shop>

@@ -1,14 +1,14 @@
 package main.shop;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
-@XmlRootElement
-public class SubCategory<T> {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class SubCategory {
     @XmlElement
     private String name;
-    private List<T> products;
+    @XmlElement(name = "product")
+    private List<Product> products;
 
     public String getName() {
         return name;
@@ -18,12 +18,11 @@ public class SubCategory<T> {
         this.name = name;
     }
 
-    public List<T> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    @XmlElement( name = "product" )
-    public void setProducts(List<T> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 

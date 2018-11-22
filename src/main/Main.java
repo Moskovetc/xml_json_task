@@ -5,7 +5,7 @@ import main.xmlmanager.XMLManager;
 
 public class Main {
     public static void main(String[] args) {
-        String path = "C:\\Users\\Leonid_Moskovets\\Desktop\\workspace\\xml_json_task\\examples\\example.xml";
+        String path = "example.xml";
         XMLManager xmlManager = new XMLManager();
         Shop shop = xmlManager.unmarshal(path);
         System.out.println(shop);

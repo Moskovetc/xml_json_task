@@ -22,9 +22,9 @@ public class XMLManager {
             File file = new File(outputFile);
             JAXBContext jaxbContext = JAXBContext.newInstance(Shop.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+            jaxbMarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, "example.xsd");
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             jaxbMarshaller.marshal(shop, file);
-            jaxbMarshaller.marshal(shop, System.out);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
@@ -56,14 +56,14 @@ public class XMLManager {
         return shop;
     }
 
-    private List<Category<SubCategory>> getCategories(
+    private List<Category> getCategories(
             String elementName, String parentElementName, XMLStreamReader reader)
             throws XMLStreamException, JAXBException {
-        List<Category<SubCategory>> categories = new ArrayList<>();
+        List<Category> categories = new ArrayList<>();
         while (reader.hasNext()) {
             int event = reader.next();
             if (XMLStreamConstants.START_ELEMENT == event && reader.getLocalName().equals(elementName)) {
-                Category<SubCategory> category = new Category<>();
+                Category category = new Category();
                 category.setName(getText("name", reader));
                 category.setSubCategories(getSubcategories("subcategory",
                         "category", reader));
@@ -81,7 +81,7 @@ public class XMLManager {
         while (reader.hasNext()) {
             int event = reader.next();
             if (XMLStreamConstants.START_ELEMENT == event && reader.getLocalName().equals(elementName)) {
-                SubCategory<Product> subCategory = new SubCategory<>();
+                SubCategory subCategory = new SubCategory();
                 subCategory.setName(getText("name", reader));
                 List<Product> products = getProducts("product", "subcategory", reader);
                 subCategory.setProducts(products);
