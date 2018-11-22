@@ -34,7 +34,7 @@ public class XMLManager {
         Shop shop = new Shop();
         try (StaxStreamProcessor processor = new StaxStreamProcessor(Files.newInputStream(Paths.get(inputFile)))) {
             XMLStreamReader reader = processor.getReader();
-            shop = getShop("shop", "shops", reader);
+            shop = getShop("shop", reader);
         } catch (XMLStreamException | IOException | JAXBException e) {
             e.printStackTrace();
         }
@@ -42,7 +42,7 @@ public class XMLManager {
     }
 
     private Shop getShop(
-            String elementName, String parentElementName, XMLStreamReader reader)
+            String elementName, XMLStreamReader reader)
             throws XMLStreamException, JAXBException {
         Shop shop = new Shop();
         while (reader.hasNext()) {
@@ -51,7 +51,7 @@ public class XMLManager {
                 shop.setName(getText("name", reader));
                 shop.setCategories(getCategories("category", "shop", reader));
             }
-            if (XMLStreamConstants.END_ELEMENT == event && reader.getLocalName().equals(parentElementName)) break;
+//            if (XMLStreamConstants.END_ELEMENT == event && reader.getLocalName().equals(elementName)) break;
         }
         return shop;
     }
@@ -65,7 +65,7 @@ public class XMLManager {
             if (XMLStreamConstants.START_ELEMENT == event && reader.getLocalName().equals(elementName)) {
                 Category category = new Category();
                 category.setName(getText("name", reader));
-                category.setSubCategories(getSubcategories("subcategory",
+                category.setSubCategories(getSubcategories("subCategory",
                         "category", reader));
                 categories.add(category);
             }
@@ -83,7 +83,7 @@ public class XMLManager {
             if (XMLStreamConstants.START_ELEMENT == event && reader.getLocalName().equals(elementName)) {
                 SubCategory subCategory = new SubCategory();
                 subCategory.setName(getText("name", reader));
-                List<Product> products = getProducts("product", "subcategory", reader);
+                List<Product> products = getProducts("product", "subCategory", reader);
                 subCategory.setProducts(products);
                 subCategories.add(subCategory);
             }
