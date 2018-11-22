@@ -9,7 +9,7 @@
 				<name>Pork</name>
 				<manufacturer>Pork Co</manufacturer>
 				<model>mea001</model>
-				<manufacturedate>10-11-2018</manufacturedate>
+				<manufactureDate>10-11-2018</manufactureDate>
 				<color>pink</color>
 				<price>250</price>
 				<quantity>5</quantity>

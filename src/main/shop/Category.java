@@ -1,10 +1,7 @@
 package main.shop;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import java.util.List;
 
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Category<T> {
     private String name;
     private List<T> subCategories;

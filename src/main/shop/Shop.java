@@ -2,7 +2,10 @@ package main.shop;
 
 import main.StaxStreamProcessor;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -10,99 +13,79 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Shop {
     private String path = "C:\\Users\\Leonid_Moskovets\\Desktop\\workspace\\xml_json_task\\examples\\example.xml";
+
     public void run() {
-        List<Category> categories = new ArrayList<>();
-        try {
-//            xmlToString(path);
-            getCategories(path);
+        List<Category<SubCategory>> categories = new ArrayList<>();
+        try (StaxStreamProcessor processor = new StaxStreamProcessor(Files.newInputStream(Paths.get(path)))) {
+            XMLStreamReader reader = processor.getReader();
+            categories = getCategories("category", "shop", reader);
         } catch (XMLStreamException | IOException | JAXBException e) {
             e.printStackTrace();
         }
-        System.out.println(Arrays.toString(categories.toArray()));
+        System.out.println(categories);
     }
 
-    private void xmlToString(String path) throws IOException, XMLStreamException, JAXBException {
-        try (StaxStreamProcessor processor = new StaxStreamProcessor(Files.newInputStream(Paths.get(path)))) {
-            XMLStreamReader reader = processor.getReader();
-            while (reader.hasNext()) {
-                int event = reader.next();
-                switch (event){
-                    case XMLStreamConstants.START_DOCUMENT:
-                        System.out.println("Start Document.");
-                        break;
-                    case XMLStreamConstants.START_ELEMENT:
-                        System.out.println("Start Element: " + reader.getName());
-                        for(int i = 0, n = reader.getAttributeCount(); i < n; ++i)
-                            System.out.println("Attribute: " + reader.getAttributeName(i)
-                                    + "=" + reader.getAttributeValue(i));
-
-                        break;
-                    case XMLStreamConstants.CHARACTERS:
-                        if (reader.isWhiteSpace())
-                            break;
-
-                        System.out.println("Text: " + reader.getText());
-                        break;
-                    case XMLStreamConstants.END_ELEMENT:
-                        System.out.println("End Element:" + reader.getName());
-                        break;
-                    case XMLStreamConstants.END_DOCUMENT:
-                        System.out.println("End Document.");
-                        break;
-                }
+    private List<Category<SubCategory>> getCategories(
+            String elementName, String parentElementName, XMLStreamReader reader)
+            throws XMLStreamException, JAXBException {
+        List<Category<SubCategory>> categories = new ArrayList<>();
+        while (reader.hasNext()) {
+            int event = reader.next();
+            if (XMLStreamConstants.START_ELEMENT == event && reader.getLocalName().equals(elementName)) {
+                Category<SubCategory> category = new Category<>();
+                category.setName(getText("name", reader));
+                category.setSubCategories(getSubcategories("subcategory",
+                        "category", reader));
+                categories.add(category);
             }
+            if (XMLStreamConstants.END_ELEMENT == event && reader.getLocalName().equals(parentElementName)) break;
         }
+        return categories;
     }
 
-    private void getCategories(String path) throws IOException, XMLStreamException, JAXBException {
-        try (StaxStreamProcessor processor = new StaxStreamProcessor(Files.newInputStream(Paths.get(path)))) {
-            XMLStreamReader reader = processor.getReader();
-            while (reader.hasNext()) {
-                int event = reader.next();
-                if (XMLStreamConstants.START_ELEMENT == event && reader.getName().equals("category")){
-                    Category category = new Category();
-                    while (reader.hasNext()){
-                        event = reader.next();
-                        if (XMLStreamConstants.START_ELEMENT == event && reader.getName().equals("name")){
-                            while (reader.hasNext()) {
-                                event = reader.next();
-                                if (XMLStreamConstants.CHARACTERS == event && !reader.isWhiteSpace()) {
-                                    category.setName(reader.getText());
-                                }
-                            }
-                        }
-                    }
-                }
-                if (XMLStreamConstants.START_ELEMENT == event && reader.getName().equals("subcategory")) {
-                    SubCategory subCategory = new SubCategory();
-                    while (reader.hasNext()){
-                        event = reader.next();
-                        if (XMLStreamConstants.START_ELEMENT == event && reader.getName().equals("name")){
-                            while (reader.hasNext()) {
-                                event = reader.next();
-                                if (XMLStreamConstants.CHARACTERS == event && !reader.isWhiteSpace()) {
-                                    subCategory.setName(reader.getText());
-                                }
-                            }
-                        }
-                    }
-                }
-                if (XMLStreamConstants.CHARACTERS == event)
-                    if (!reader.isWhiteSpace())
-                        System.out.println(reader.getText());
+    private List<SubCategory> getSubcategories(
+            String elementName, String parentElementName, XMLStreamReader reader)
+            throws XMLStreamException, JAXBException {
+        List<SubCategory> subCategories = new ArrayList<>();
+        while (reader.hasNext()) {
+            int event = reader.next();
+            if (XMLStreamConstants.START_ELEMENT == event && reader.getLocalName().equals(elementName)) {
+                SubCategory<Product> subCategory = new SubCategory<>();
+                subCategory.setName(getText("name", reader));
+                List<Product> products = getProducts("product", "subcategory", reader);
+                subCategory.setProducts(products);
+                subCategories.add(subCategory);
             }
+            if (XMLStreamConstants.END_ELEMENT == event && reader.getLocalName().equals(parentElementName)) break;
         }
+        return subCategories;
+    }
+
+    private List<Product> getProducts(
+            String elementName, String parentElementName, XMLStreamReader reader)
+            throws XMLStreamException, JAXBException {
+        List<Product> products = new ArrayList<>();
+        while (reader.hasNext()) {
+            int event = reader.next();
+            if (XMLStreamConstants.START_ELEMENT == event && reader.getLocalName().equals(elementName)) {
+                JAXBContext jc = JAXBContext.newInstance(Product.class);
+                Unmarshaller unmarshaller = jc.createUnmarshaller();
+                JAXBElement<Product> jb = unmarshaller.unmarshal(reader, Product.class);
+                products.add(jb.getValue());
+            }
+            if (XMLStreamConstants.END_ELEMENT == event && reader.getLocalName().equals(parentElementName)) break;
+        }
+        return products;
     }
 
     private String getText(String elementName, XMLStreamReader reader) throws XMLStreamException {
         while (reader.hasNext()) {
             int event = reader.next();
-            if (XMLStreamConstants.START_ELEMENT == event && reader.getName().equals("name")) {
+            if (XMLStreamConstants.START_ELEMENT == event && reader.getLocalName().equals(elementName)) {
                 while (reader.hasNext()) {
                     event = reader.next();
                     if (XMLStreamConstants.CHARACTERS == event && !reader.isWhiteSpace()) {
@@ -111,5 +94,6 @@ public class Shop {
                 }
             }
         }
+        return "";
     }
 }

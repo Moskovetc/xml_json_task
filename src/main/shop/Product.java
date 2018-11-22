@@ -1,14 +1,18 @@
 package main.shop;
 
+import main.LocalDateAdapter;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Product {
     private String name;
-    private String manufaturer;
+    private String manufacturer;
     private String model;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate manufactureDate;
     private String color;
     private int price;
@@ -23,11 +27,11 @@ public class Product {
     }
 
     public String getManufaturer() {
-        return manufaturer;
+        return manufacturer;
     }
 
     public void setManufaturer(String manufaturer) {
-        this.manufaturer = manufaturer;
+        this.manufacturer = manufaturer;
     }
 
     public String getModel() {
@@ -74,7 +78,7 @@ public class Product {
     public String toString() {
         return "Product{" +
                 "name='" + name + '\'' +
-                ", manufaturer='" + manufaturer + '\'' +
+                ", manufaturer='" + manufacturer + '\'' +
                 ", model='" + model + '\'' +
                 ", manufactureDate=" + manufactureDate +
                 ", color='" + color + '\'' +
